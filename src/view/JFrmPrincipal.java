@@ -36,6 +36,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMnuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jmnuvendas = new javax.swing.JMenuItem();
+        jmnucompras = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +48,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usuario.png"))); // NOI18N
         jMnuUsuarios.setMnemonic('U');
         jMnuUsuarios.setText("Usuarios");
+        jMnuUsuarios.setPreferredSize(new java.awt.Dimension(160, 30));
         jMnuUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMnuUsuariosActionPerformed(evt);
@@ -78,7 +81,24 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnuCadastros);
 
+        jMenu2.setMnemonic('M');
         jMenu2.setText("Movimentos");
+
+        jmnuvendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmnuvendas.setMnemonic('V');
+        jmnuvendas.setText("Vendas");
+        jmnuvendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnuvendasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmnuvendas);
+
+        jmnucompras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmnucompras.setMnemonic('P');
+        jmnucompras.setText("Compras");
+        jMenu2.add(jmnucompras);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -107,6 +127,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jMnuSairActionPerformed
+
+    private void jmnuvendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnuvendasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmnuvendasActionPerformed
 
 
     /**
@@ -153,5 +177,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem jmnucompras;
+    private javax.swing.JMenuItem jmnuvendas;
     // End of variables declaration//GEN-END:variables
 }
