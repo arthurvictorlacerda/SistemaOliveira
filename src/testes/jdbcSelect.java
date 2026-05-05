@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package testes;
 
-import bean.MpvUsuarios;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,17 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import testes.jdbcSelect;
 
 /**
  *
  * @author u06769532123
  */
-public class DaoMpvUsuarios extends DaoAbstract {
+public class jdbcSelect {
 
-    @Override
-    public void insert(Object object) {
-        MpvUsuarios mpvUsuarios = (MpvUsuarios) object;
+    public static void main(String[] args) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url, user, password;
@@ -31,44 +27,19 @@ public class DaoMpvUsuarios extends DaoAbstract {
             password = "marcos_vilhanueva";
             Connection cnt;
             cnt = DriverManager.getConnection(url, user, password);
-            String sgl = "insert into mpv_usuarios values(?,?,?,?,?,?,?,?)";
+            String sgl = "Select * from mpv_usuarios";
             PreparedStatement pst = cnt.prepareStatement(sgl);
-            pst.setInt(1, mpvUsuarios.getMpvIdUsuarios());
-            pst.setString(2, mpvUsuarios.getMpvNome());
-            pst.setString(3, mpvUsuarios.getMpvApelido());
-            pst.setString(4, mpvUsuarios.getMpvcpf());
-            pst.setDate(5, null);//mpv_datanascimento
-            pst.setInt(6, mpvUsuarios.getMpvNivel());
-            pst.setString(7, mpvUsuarios.getMpvSenha());
-            pst.setString(8, mpvUsuarios.getMpvAtivo());
-            pst.executeUpdate();
-            
-             
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            while (rs.next() == true) {
+                System.out.println("codigo:" + rs.getInt("mpv_idusuarios"));
+                System.out.println("nome:" + rs.getString("mpv_nome"));
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(jdbcSelect.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(jdbcSelect.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("Conectou ");
     }
-
-    @Override
-    public void update(Object object) {
-
-    }
-
-    @Override
-    public void delete(Object object) {
-
-    }
-
-    @Override
-    public Object list(int id) {
-        return null;
-    }
-
-    @Override
-    public Object listAll() {
-        return null;
-    }
-
 }
